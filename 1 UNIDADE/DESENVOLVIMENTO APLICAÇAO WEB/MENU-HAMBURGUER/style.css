@@ -1,0 +1,59 @@
+/* Reset básico */
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 0 1rem;
+    background-color: red;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .menu {
+    display: none;
+  }
+  
+  .menu-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .menu {
+      display: block;
+    }
+    .menu-toggle {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+        nav ul {
+          display: flex;
+          gap: 1rem;
+        }
+        .menu-toggle {
+          display: none;
+        }
+      }
+      
+      @media (max-width: 767px) {
+        nav ul {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+      
+  }
+  
