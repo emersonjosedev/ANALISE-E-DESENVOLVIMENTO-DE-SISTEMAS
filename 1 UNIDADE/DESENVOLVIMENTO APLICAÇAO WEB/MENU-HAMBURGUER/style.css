@@ -28,7 +28,9 @@ body, h1, p, ul, li {
   .menu {
     display: none;
   }
-  
+  .menu.active {
+    display: block;
+  }
   .menu-toggle {
     font-size: 1.5rem;
     background: none;
