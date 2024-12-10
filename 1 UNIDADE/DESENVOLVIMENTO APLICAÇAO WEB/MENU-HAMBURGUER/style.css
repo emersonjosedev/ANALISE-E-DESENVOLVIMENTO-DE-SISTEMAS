@@ -24,7 +24,16 @@ body, h1, p, ul, li {
    width: 5rem;
 
   }
-  
+  ul{
+    display: flex;
+  }
+  a{
+    color: #ffffff;
+    padding: 1rem;
+  }
+  img{
+    width: 6rem;
+  }
   .menu {
     display: none;
   }
@@ -38,13 +47,37 @@ body, h1, p, ul, li {
     border: none;
     cursor: pointer;
   }
+   td{
+    padding: 1rem;
+   }
+  footer{
+    margin-top: 15rem;
+  }
+   
+  li:hover{
+    background-color: #ffffff;
+    background-image: url('https://images.tcdn.com.br/img/img_prod/1210972/noticia_435743856649abe06616ae.jpg');
+  }
+  td:hover{
+    background-image: url('https://images.tcdn.com.br/img/img_prod/1210972/noticia_435743856649abe06616ae.jpg');
+    transform: scale(1.5);
+   
+  }
+  .imagens-menu:hover{
+    transform: scale(3);
+  }
   
+  
+
   @media (min-width: 768px) {
     .menu {
       display: block;
     }
     .menu-toggle {
       display: none;
+      a{
+        padding: 1rem;
+      }
     }
 
     @media (min-width: 768px) {
@@ -55,6 +88,9 @@ body, h1, p, ul, li {
         .menu-toggle {
           display: none;
         }
+        a{
+          padding: 1rem;
+        }
       }
       
       @media (max-width: 767px) {
@@ -63,6 +99,10 @@ body, h1, p, ul, li {
           gap: 0.5rem;
         }
       }
+      a{
+        padding: 1rem;
+      }
+      
       
   }
   

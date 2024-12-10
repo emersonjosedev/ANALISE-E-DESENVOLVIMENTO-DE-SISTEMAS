@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamburgueria</title>
+  <title>HamburgueriaNOrdeste</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,28 +12,30 @@
     <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
     <nav class="menu">
       <ul class="menu-t">
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Contato</a></li>
+        <li><a href="/index.html">Início</a></li>
+
+        <li><a href="/sobre.html">Sobre</a></li>
+        <li><a href="https://web.whatsapp.com/ " target="_blank">Contato</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section>
-      <h1>Bem-vindo à Hamburgueria!</h1>
+      <h1>Bem-vindo à HamburgueriaNOrdeste!</h1>
       
-      <!-- Tabela de Cardápio -->
+     
       <table id="tabela">
         <thead>
           <tr>
+            <th class="imagens-menu"></th>
             <th>Item</th>
-            <th>Descrição</th>
+            <th>Sabor</th>
             <th>Preço</th>
           </tr>
         </thead>
         <tbody>
-          <!-- O conteúdo da tabela será gerado dinamicamente -->
+      
         </tbody>
       </table>
     </section>
@@ -50,6 +52,24 @@
     menuToggle.addEventListener('click', () => {
       menu.classList.toggle('active');
     });
+    
+    let imagens = {
+      hamburguer: [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCVqYyK46P0VvE9hBFFij2kgoF4GmSXMIKLw&s",
+        "https://ogimg.infoglobo.com.br/in/20241289-75a-85f/FT1086A/Rio-Gastronomia.jpg",
+        "https://s2.glbimg.com/E4YG-zEvs8LxxnetxCIyfpxz3b0=/smart/e.glbimg.com/og/ed/f/original/2022/01/05/hamburguer-camarao-tomate-cebola.jpg"
+      ],
+      batatas: [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyxZ7DjvvPOFncjt1E-WFlMtbM5r1Ag2dTiw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnF3NSaNiwlM_eLs0lbLF8B8JZnmy8jbkTjA&s",
+        "https://static.wixstatic.com/media/a037bb_95c9809d8f2a466784365ba9acfa698e~mv2.jpg/v1/fill/w_480,h_406,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/a037bb_95c9809d8f2a466784365ba9acfa698e~mv2.jpg"
+      ],
+      refrigerante: [
+        "https://img.freepik.com/fotos-premium/copo-de-refrigerante-de-laranja-com-gelo-no-fundo-branco_55716-862.jpg",
+        "https://static.vecteezy.com/ti/fotos-gratis/p2/1740482-copo-de-refrigerante-com-canudo-gratis-foto.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB2D4n6DZwcMGJvyLjYo-4YwxqVdOCTR_E4A&s"
+      ]
+    };
 
     let prices = {
        hamburguer: [22.99, 28.99, 32.55],
@@ -61,40 +81,43 @@
       hamburguer: ['NO-bacon', 'NO-nordestino', 'NO-camarão'],
       batatas: ['P', 'M', 'G'],
       refrigerante: ['P', 'M', 'G'],
-      refrigeranteMarca: ['Fanta', 'Coca-cola', 'Guaraná do Amazonas']
+      refrigeranteMarca: ['Fanta', 'Coca-cola', 'pepsi']
     };
 
-    // Referência à tabela
+  
     let tabela = document.getElementById("tabela").getElementsByTagName("tbody")[0];
 
-    // Função para gerar o cardápio dinamicamente
+
     function gerarCardapio() {
-      // Gerar as linhas para os hambúrgueres
+   
       for (let i = 0; i < cardapio.hamburguer.length; i++) {
         let linha = document.createElement('tr');
         linha.innerHTML = `
+          <td><img src="${imagens.hamburguer[i]}" alt="${cardapio.hamburguer[i]}" width="50"></td>
           <td>Hamburguer</td>
           <td>${cardapio.hamburguer[i]}</td>
           <td>R$${prices.hamburguer[i].toFixed(2)}</td>
         `;
         tabela.appendChild(linha);
       }
+    
 
-      // Gerar as linhas para as batatas
       for (let i = 0; i < cardapio.batatas.length; i++) {
         let linha = document.createElement('tr');
         linha.innerHTML = `
+          <td><img src="${imagens.batatas[i]}" alt="Batata ${cardapio.batatas[i]}" width="50"></td>
           <td>Batata</td>
           <td>Tamanho ${cardapio.batatas[i]}</td>
           <td>R$${prices.batatas[i].toFixed(2)}</td>
         `;
         tabela.appendChild(linha);
       }
+    
 
-      // Gerar as linhas para os refrigerantes
       for (let i = 0; i < cardapio.refrigerante.length; i++) {
         let linha = document.createElement('tr');
         linha.innerHTML = `
+          <td><img src="${imagens.refrigerante[i]}" alt="${cardapio.refrigeranteMarca[i]} (${cardapio.refrigerante[i]})" width="50"></td>
           <td>Refrigerante</td>
           <td>${cardapio.refrigeranteMarca[i]} (${cardapio.refrigerante[i]})</td>
           <td>R$${prices.refrigerante[i].toFixed(2)}</td>
@@ -103,7 +126,7 @@
       }
     }
 
-    // Chama a função para gerar o cardápio
+
     gerarCardapio();
   </script>
 </body>
