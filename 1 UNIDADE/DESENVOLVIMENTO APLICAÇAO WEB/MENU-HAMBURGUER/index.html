@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hambuergueria</title>
+  <title>Hamburgueria</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">Minha Logo</div>
+    <div class="logo"><img src="https://img.freepik.com/vetores-premium/estilo-de-vetor-de-ilustracao-de-hamburguer_997622-43.jpg?w=360" alt=""></div>
     <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
     <nav class="menu">
       <ul>
@@ -18,14 +18,29 @@
       </ul>
     </nav>
   </header>
+
   <main>
     <section>
-      <h1>Bem-vindo!</h1>
-      <p>Conteúdo principal aqui.</p>
+      <h1>Bem-vindo à Hamburgueria!</h1>
+      
+      <!-- Tabela de Cardápio -->
+      <table id="tabela">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- O conteúdo da tabela será gerado dinamicamente -->
+        </tbody>
+      </table>
     </section>
   </main>
+
   <footer>
-    <p>© 2024 Minha Aplicação</p>
+    <p>© 2024 BURGUER-NORDESTE</p>
   </footer>
 
   <script>
@@ -35,8 +50,61 @@
     menuToggle.addEventListener('click', () => {
       menu.classList.toggle('active');
     });
-    
 
+    let prices = {
+       hamburguer: [22.99, 28.99, 32.55],
+       batatas: [9.99, 13.99, 15.99],
+       refrigerante: [4.99, 7.99, 8.99]
+    };
+
+    let cardapio = {
+      hamburguer: ['NO-bacon', 'NO-nordestino', 'NO-camarão'],
+      batatas: ['P', 'M', 'G'],
+      refrigerante: ['P', 'M', 'G'],
+      refrigeranteMarca: ['Fanta', 'Coca-cola', 'Guaraná do Amazonas']
+    };
+
+    // Referência à tabela
+    let tabela = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+
+    // Função para gerar o cardápio dinamicamente
+    function gerarCardapio() {
+      // Gerar as linhas para os hambúrgueres
+      for (let i = 0; i < cardapio.hamburguer.length; i++) {
+        let linha = document.createElement('tr');
+        linha.innerHTML = `
+          <td>Hamburguer</td>
+          <td>${cardapio.hamburguer[i]}</td>
+          <td>R$${prices.hamburguer[i].toFixed(2)}</td>
+        `;
+        tabela.appendChild(linha);
+      }
+
+      // Gerar as linhas para as batatas
+      for (let i = 0; i < cardapio.batatas.length; i++) {
+        let linha = document.createElement('tr');
+        linha.innerHTML = `
+          <td>Batata</td>
+          <td>Tamanho ${cardapio.batatas[i]}</td>
+          <td>R$${prices.batatas[i].toFixed(2)}</td>
+        `;
+        tabela.appendChild(linha);
+      }
+
+      // Gerar as linhas para os refrigerantes
+      for (let i = 0; i < cardapio.refrigerante.length; i++) {
+        let linha = document.createElement('tr');
+        linha.innerHTML = `
+          <td>Refrigerante</td>
+          <td>${cardapio.refrigeranteMarca[i]} (${cardapio.refrigerante[i]})</td>
+          <td>R$${prices.refrigerante[i].toFixed(2)}</td>
+        `;
+        tabela.appendChild(linha);
+      }
+    }
+
+    // Chama a função para gerar o cardápio
+    gerarCardapio();
   </script>
 </body>
 </html>
